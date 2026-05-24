@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#0f172a] text-[#f8fafc];
+    font-family: 'Inter', sans-serif;
+  }
+}
+@layer base {
+  body {
+    background-color: #fcfcfc; /* Reference style light cream/soft background */
+    color: #1a1a1a;
+  }
+}
+
+
