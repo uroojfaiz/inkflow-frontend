@@ -30,13 +30,23 @@ function ChatBot() {
 
   return (
     <>
-      <button onClick={() => setIsOpen(!isOpen)} className="fixed bottom-8 right-8 bg-teal-600 p-4 rounded-full text-white shadow-2xl z-50 hover:scale-110 transition-transform">
+      <motion.button 
+        whileHover={{ scale: 1.1 }} 
+        whileTap={{ scale: 0.9 }}
+        onClick={() => setIsOpen(!isOpen)} 
+        className="fixed bottom-8 right-8 bg-teal-600 p-4 rounded-full text-white shadow-2xl z-50 transition-transform"
+      >
         {isOpen ? <X /> : <MessageCircle />}
-      </button>
+      </motion.button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="fixed bottom-24 right-8 w-80 h-96 bg-white rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden border">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="fixed bottom-24 right-8 w-80 h-96 bg-white rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden border"
+          >
             <div className="bg-teal-600 p-4 text-white font-bold flex justify-between items-center">
               InkFlow AI Assistant
               <button onClick={() => setIsOpen(false)}><X size={16}/></button>
@@ -81,18 +91,18 @@ export default function HomePage() {
       
       {/* HERO SECTION */}
       <section className="container mx-auto px-6 py-20 grid md:grid-cols-2 items-center gap-12">
-        <div>
+        <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}>
           <motion.div whileHover={{ scale: 1.05 }} className="inline-block relative group">
             <span className="text-teal-600 font-bold bg-teal-100 px-4 py-1 rounded-full text-sm">INKFLOW 2026</span>
           </motion.div>
           <h1 className="text-6xl font-black mt-6 leading-tight">Master the Art of <span className="text-teal-500">Digital Writing</span></h1>
           <p className="text-gray-500 mt-6 text-lg">Join the world's fastest-growing community of creators. Write, share, and grow your influence.</p>
           <div className="flex gap-4 mt-8">
-            <button onClick={() => token ? navigate("/create") : navigate("/login")} className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-teal-600 transition">Start Writing</button>
-            <button onClick={() => navigate("/explore")} className="bg-white border border-gray-200 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition">Explore</button>
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => token ? navigate("/create") : navigate("/login")} className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-teal-600 transition">Start Writing</motion.button>
+            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate("/explore")} className="bg-white border border-gray-200 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition">Explore</motion.button>
           </div>
-        </div>
-        <motion.img initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" className="rounded-[3rem] shadow-2xl" />
+        </motion.div>
+        <motion.img initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" className="rounded-[3rem] shadow-2xl" />
       </section>
 
       {/* STATS SECTION */}
@@ -114,7 +124,12 @@ export default function HomePage() {
         <div className="container mx-auto px-6 flex flex-wrap justify-center gap-16">
           {features.map((f) => (
             <div key={f.id} className="relative flex flex-col items-center">
-              <motion.div onHoverStart={() => setHoveredFeature(f.id)} onHoverEnd={() => setHoveredFeature(null)} className="w-32 h-32 rounded-full bg-gray-50 border-4 border-teal-100 flex items-center justify-center cursor-pointer hover:bg-teal-500 hover:text-white transition-colors duration-300">
+              <motion.div 
+                whileHover={{ scale: 1.1 }}
+                onHoverStart={() => setHoveredFeature(f.id)} 
+                onHoverEnd={() => setHoveredFeature(null)} 
+                className="w-32 h-32 rounded-full bg-gray-50 border-4 border-teal-100 flex items-center justify-center cursor-pointer hover:bg-teal-500 hover:text-white transition-colors duration-300"
+              >
                 {f.icon}
               </motion.div>
               <AnimatePresence>
